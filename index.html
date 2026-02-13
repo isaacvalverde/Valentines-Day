@@ -1,86 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para Jenny ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación para el amor de mi vida ❤️</title>
+
+  <!-- Fuente romántica -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
       overflow: hidden;
+      background: linear-gradient(-45deg, #ff4e8d, #ff758c, #ff7eb3, #ff9ecb);
+      background-size: 400% 400%;
+      animation: fondoAnimado 10s ease infinite;
+      color: white;
+      padding: 20px;
+    }
+
+    @keyframes fondoAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     h1 {
-      margin-top: 100px;
-      font-size: 40px;
-      color: white;
-      text-shadow: 2px 2px 5px #ff4d6d;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
 
     p {
-      font-size: 20px;
-      color: white;
+      font-size: 1.4em;
+      margin: 15px 0 40px 0;
+    }
+
+    .botones {
+      position: relative;
+      width: 100%;
+      height: 150px;
     }
 
     button {
       padding: 15px 30px;
-      font-size: 20px;
+      font-size: 18px;
       border: none;
-      border-radius: 12px;
+      border-radius: 30px;
       cursor: pointer;
-      margin: 20px;
       transition: 0.3s;
       position: absolute;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     #yes {
-      background-color: #ff4d6d;
-      color: white;
-      left: 40%;
-      top: 60%;
-    }
-
-    #no {
       background-color: white;
-      color: #ff4d6d;
-      left: 55%;
-      top: 60%;
+      color: #ff4e8d;
+      left: 25%;
     }
 
     #yes:hover {
-      background-color: #ff1e4d;
+      transform: scale(1.1);
     }
-  </style>
-</head>
-<body>
 
-<h1>Jenny ❤️</h1>
-<p>¿Quieres ser mi San Valentín? ❤️</p>
+    #no {
+      background-color: #ff1e4d;
+      color: white;
+      left: 55%;
+    }
 
-<button id="yes" onclick="respuesta()">Sí ❤️</button>
-<button id="no" onmouseover="moverBoton()">No 😔</button>
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2em;
+      }
 
-<script>
-function respuesta() {
-  document.body.innerHTML = `
-    <h1 style="color:white; margin-top:150px;">
-      Encantado de pasar tiempo contigo😍<br>
-      Te amo mucho mi amor❤️
-    </h1>
-  `;
-}
+      p {
+        font-size: 1.2em;
+      }
 
-function moverBoton() {
-  var boton = document.getElementById("no");
-  var x = Math.random() * (window.innerWidth - 100);
-  var y = Math.random() * (window.innerHeight - 50);
-  boton.style.left = x + "px";
-  boton.style.top = y + "px";
-}
-</script>
+      button {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+
+      #yes {
+        left: 15%;
+      }
+
+      #no {
+        left: 55%;
+      }
+    }
+
+    .corazon {
+      position: absolute;
+      color
+
 
 </body>
 </html>
