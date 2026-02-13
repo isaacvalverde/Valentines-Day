@@ -1,161 +1,197 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitación para el amor de mi vida ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Jenny❤️</title>
 
-  <!-- Fuente romántica -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      overflow: hidden;
-      background: linear-gradient(-45deg, #ff4e8d, #ff758c, #ff7eb3, #ff9ecb);
-      background-size: 400% 400%;
-      animation: fondoAnimado 10s ease infinite;
-      color: white;
-      padding: 20px;
-    }
+<style>
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(to top,#f8b6c1,#fddde6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
 
-    @keyframes fondoAnimado {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+/* ✨ Brillo suave */
+.brillo{
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  animation:brillar 6s infinite alternate;
+  z-index:1;
+}
 
-    h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 3em;
-      margin: 0;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
+@keyframes brillar{
+  0%{transform:translate(-25%,-25%) scale(1);}
+  100%{transform:translate(-30%,-30%) scale(1.1);}
+}
 
-    p {
-      font-size: 1.4em;
-      margin: 15px 0 40px 0;
-    }
+/* Carta */
+.contenedor{
+  text-align:center;
+  z-index:5;
+}
 
-    .botones {
-      position: relative;
-      width: 100%;
-      height: 150px;
-    }
+h1{
+  font-family:'Dancing Script',cursive;
+  font-size:2.5em;
+  color:#c2185b;
+}
 
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s;
-      position: absolute;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
+.sobre{
+  position:relative;
+  width:280px;
+  height:180px;
+  background:#e91e63;
+  margin:30px auto;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.6s;
+}
 
-    #yes {
-      background-color: white;
-      color: #ff4e8d;
-      left: 25%;
-    }
+.sobre:before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ad1457;
+  clip-path:polygon(0 0,50% 60%,100% 0);
+  transform-origin:top;
+  transition:0.6s;
+}
 
-    #yes:hover {
-      transform: scale(1.1);
-    }
+.carta{
+  position:absolute;
+  width:90%;
+  height:140px;
+  background:white;
+  top:20px;
+  left:5%;
+  border-radius:10px;
+  padding:15px;
+  box-sizing:border-box;
+  transform:translateY(80px);
+  transition:0.6s;
+  opacity:0;
+}
 
-    #no {
-      background-color: #ff1e4d;
-      color: white;
-      left: 55%;
-    }
+.carta p{
+  font-size:14px;
+  color:#c2185b;
+}
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2em;
-      }
+.abierto:before{
+  transform:rotateX(180deg);
+}
 
-      p {
-        font-size: 1.2em;
-      }
+.abierto .carta{
+  transform:translateY(-30px);
+  opacity:1;
+}
 
-      button {
-        font-size: 16px;
-        padding: 12px 20px;
-      }
+/* Pregunta final */
+.pregunta{
+  display:none;
+  margin-top:20px;
+}
 
-      #yes {
-        left: 15%;
-      }
+button{
+  padding:12px 25px;
+  font-size:16px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
+}
 
-      #no {
-        left: 55%;
-      }
-    }
+#si{
+  background:#c2185b;
+  color:white;
+}
 
-    .corazon {
-      position: absolute;
-      color: rgba(255,255,255,0.4);
-      font-size: 20px;
-      animation: caer 6s linear infinite;
-    }
+#no{
+  background:white;
+  color:#c2185b;
+  position:absolute;
+}
 
-    @keyframes caer {
-      0% { top: -10px; opacity: 1; }
-      100% { top: 100vh; opacity: 0; }
-    }
-  </style>
+@media(max-width:600px){
+  h1{font-size:2em;}
+  .sobre{width:230px;height:150px;}
+}
+</style>
 </head>
 <body>
 
-<h1>Jenny ❤️</h1>
-<p>¿Quieres ser mi San Valentín? 💌</p>
+<div class="brillo"></div>
 
-<div class="botones">
-  <button id="yes" onclick="respuesta()">Sí ❤️</button>
-  <button id="no" onmouseover="moverBoton()">No 😔</button>
+<!-- 🎵 Música -->
+<audio id="musica" loop>
+  <source src="perfect.mp3" type="audio/mpeg">
+</audio>
+
+<div class="contenedor">
+  <h1>Para Jenny (El amor de mi vida)❤️</h1>
+
+  <div class="sobre" onclick="abrirCarta(this)">
+    <div class="carta">
+      <p>
+        Desde que llegaste a mi vida todo es más bonito 🌸<br><br>
+        (Toca nuevamente para continuar…)
+      </p>
+    </div>
+  </div>
+
+  <div class="pregunta" id="pregunta">
+    <h2>¿Quieres ser mi San Valentín? ❤️</h2>
+    <button id="si" onclick="aceptado()">Sí ❤️</button>
+    <button id="no" onmouseover="huir()">No 😔</button>
+  </div>
 </div>
 
 <script>
-function respuesta() {
-  document.body.innerHTML = `
-    <h1 style="font-family:'Dancing Script', cursive; font-size:3em; margin-top:40%;">
-      😍 ¡Encantado de pasar tiempo contigo! ❤️<br><br>
-      Te amo muchísimo mi amor 💖
-    </h1>
-  `;
+let abierta=false;
+let segunda=false;
+
+function abrirCarta(e){
+  const musica=document.getElementById("musica");
+  musica.play();
+
+  if(!abierta){
+    e.classList.add("abierto");
+    abierta=true;
+  }else if(!segunda){
+    document.getElementById("pregunta").style.display="block";
+    segunda=true;
+  }
 }
 
-function moverBoton() {
-  var boton = document.getElementById("no");
-  var x = Math.random() * (window.innerWidth - 100);
-  var y = Math.random() * (window.innerHeight - 50);
-  boton.style.left = x + "px";
-  boton.style.top = y + "px";
+function huir(){
+  const btn=document.getElementById("no");
+  btn.style.left=Math.random()*window.innerWidth+"px";
+  btn.style.top=Math.random()*window.innerHeight+"px";
 }
 
-// Corazones cayendo
-function crearCorazon() {
-  const corazon = document.createElement("div");
-  corazon.classList.add("corazon");
-  corazon.innerHTML = "❤️";
-  corazon.style.left = Math.random() * window.innerWidth + "px";
-  corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
-  document.body.appendChild(corazon);
-
-  setTimeout(() => {
-    corazon.remove();
-  }, 6000);
+function aceptado(){
+  document.body.innerHTML=`
+  <div style="display:flex;justify-content:center;align-items:center;height:100vh;
+  background:linear-gradient(to top,#ff758c,#ff7eb3);color:white;text-align:center;">
+  <h1 style="font-family:'Dancing Script',cursive;font-size:3em;">
+  ¡Amo compartir tiempo contigo! <br><br>
+  Te amo muchísimo mi amor❤️
+  </h1>
+  </div>`;
 }
-
-setInterval(crearCorazon, 500);
 </script>
 
 </body>
