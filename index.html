@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Jenny❤️</title>
+<title>Para Jenny ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
@@ -35,7 +35,20 @@ body{
   100%{transform:translate(-30%,-30%) scale(1.1);}
 }
 
-/* Carta */
+/* Corazones flotando */
+.corazon{
+  position:absolute;
+  color:#c2185b;
+  animation:flotar 6s linear infinite;
+  font-size:18px;
+}
+
+@keyframes flotar{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-200px);opacity:0;}
+}
+
+/* Carta animada */
 .contenedor{
   text-align:center;
   z-index:5;
@@ -136,18 +149,19 @@ button{
 <div class="brillo"></div>
 
 <!-- 🎵 Música -->
-<audio id="musica" loop>
+<audio id="musica" loop autoplay>
   <source src="perfect.mp3" type="audio/mpeg">
 </audio>
 
 <div class="contenedor">
-  <h1>Para Jenny (El amor de mi vida)❤️</h1>
+  <h1>Para Jenny ❤️</h1>
 
   <div class="sobre" onclick="abrirCarta(this)">
     <div class="carta">
       <p>
         Desde que llegaste a mi vida todo es más bonito 🌸<br><br>
-        (Toca nuevamente para continuar…)
+        (Toca nuevamente para continuar…)<br><br>
+        
       </p>
     </div>
   </div>
@@ -160,38 +174,54 @@ button{
 </div>
 
 <script>
+const musica = document.getElementById("musica");
+
 let abierta=false;
 let segunda=false;
 
+// Abrir carta y mostrar pregunta
 function abrirCarta(e){
-  const musica=document.getElementById("musica");
-  musica.play();
+  if(musica.paused){
+    musica.play().catch(()=>{}); 
+  }
 
   if(!abierta){
     e.classList.add("abierto");
     abierta=true;
-  }else if(!segunda){
+  } else if(!segunda){
     document.getElementById("pregunta").style.display="block";
     segunda=true;
   }
 }
 
+// Botón No huye
 function huir(){
   const btn=document.getElementById("no");
   btn.style.left=Math.random()*window.innerWidth+"px";
   btn.style.top=Math.random()*window.innerHeight+"px";
 }
 
+// Cuando dice Sí
 function aceptado(){
-  document.body.innerHTML=`
-  <div style="display:flex;justify-content:center;align-items:center;height:100vh;
-  background:linear-gradient(to top,#ff758c,#ff7eb3);color:white;text-align:center;">
-  <h1 style="font-family:'Dancing Script',cursive;font-size:3em;">
-  ¡Amo compartir tiempo contigo! <br><br>
-  Te amo muchísimo mi amor❤️
-  </h1>
-  </div>`;
+  const contenedor = document.querySelector(".contenedor");
+  contenedor.innerHTML=`
+    <h1 style="font-family:'Dancing Script',cursive;font-size:3em;">
+    Te amo muchísimo mi amor❤️ <br><br>
+    </h1>
+  `;
 }
+
+// Crear corazones flotando
+function crearCorazon(){
+  const c=document.createElement("div");
+  c.classList.add("corazon");
+  c.innerHTML="❤️";
+  c.style.left=Math.random()*window.innerWidth+"px";
+  c.style.top=window.innerHeight+"px";
+  document.body.appendChild(c);
+  setTimeout(()=>{c.remove();},6000);
+}
+setInterval(crearCorazon,800);
 </script>
 
 </body>
