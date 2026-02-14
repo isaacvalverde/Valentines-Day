@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Jenny❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Para Jenny ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
@@ -138,7 +138,49 @@ button{
   position:absolute;
 }
 
+/* 🔥 Fuegos artificiales */
+.fuego{
+  position:absolute;
+  width:5px;
+  height:5px;
+  background:radial-gradient(circle, #ffeb3b 0%, #ff5722 80%);
+  border-radius:50%;
+  opacity:1;
+  pointer-events:none;
+  z-index:10;
+  animation:explosion 1s ease-out forwards;
+}
+
+@keyframes explosion{
+  0%{transform:translate(0,0) scale(1); opacity:1;}
+  100%{transform:translate(var(--x), var(--y)) scale(2); opacity:0;}
+}
+
+/* 🎉 Confeti */
+.confeti{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background-color:#ff4081;
+  border-radius:3px;
+  top:-10px;
+  left:50%;
+  animation:caer 4s linear forwards;
+  z-index:9;
+}
+
+@keyframes caer{
+  0%{transform:translateY(0) rotate(0deg);}
+  100%{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* Ajustes para móvil */
 @media(max-width:600px){
+  body{touch-action: manipulation;}
+  button{padding:18px 30px; font-size:18px; border-radius:30px;}
+  .contenedor{padding:10px;}
+  .brillo{opacity:0.25;}
+  .corazon{font-size:14px;}
   h1{font-size:2em;}
   .sobre{width:230px;height:150px;}
 }
@@ -154,12 +196,12 @@ button{
 </audio>
 
 <div class="contenedor">
-  <h1>Para el amor de mi vida❤️</h1>
+  <h1>¡Para el amor de mi vida!❤️</h1>
 
   <div class="sobre" onclick="abrirCarta(this)">
     <div class="carta">
       <p>
-        Desde que llegaste a mi vida todo es más bonito 🌸<br><br>
+        Desde que llegaste a mi vida todo es más bonito...🥰<br><br>
       </p>
     </div>
   </div>
@@ -167,13 +209,12 @@ button{
   <div class="pregunta" id="pregunta">
     <h2>¿Quieres ser mi San Valentín? ❤️</h2>
     <button id="si" onclick="aceptado()">Sí ❤️</button>
-    <button id="no" onmouseover="huir()">No 😔</button>
+    <button id="no" onmouseover="huir()">No 😭</button>
   </div>
 </div>
 
 <script>
 const musica = document.getElementById("musica");
-
 let abierta=false;
 let segunda=false;
 
@@ -199,18 +240,45 @@ function huir(){
   btn.style.top=Math.random()*window.innerHeight+"px";
 }
 
-// Cuando dice Sí
+// Cuando dice Sí ❤️
 function aceptado(){
   const contenedor = document.querySelector(".contenedor");
   contenedor.innerHTML=`
     <h1 style="font-family:'Dancing Script',cursive;font-size:3em;">
-    Nos vemos mañana a las 7:25 p.m <br><br>
-    ¡Te amo muchísimo mi amor!❤️ <br><br>
+      Nos vemos mañana a las 7:25 p.m <br><br>
+      ¡Te amo muchísimo mi amor!❤️ <br><br>
     </h1>
   `;
+  // Iniciar fuegos artificiales
+  setInterval(()=>{crearFuego();}, 150);
+  // Iniciar confeti
+  setInterval(()=>{crearConfeti();}, 300);
 }
 
-// Crear corazones flotando
+// Crear fuego artificial
+function crearFuego(){
+  const fuego = document.createElement("div");
+  fuego.classList.add("fuego");
+  const x = (Math.random()-0.5)*200 + "px";
+  const y = (Math.random()-0.5)*200 + "px";
+  fuego.style.setProperty('--x', x);
+  fuego.style.setProperty('--y', y);
+  fuego.style.left = Math.random()*window.innerWidth+"px";
+  fuego.style.top = Math.random()*window.innerHeight*0.5+"px";
+  document.body.appendChild(fuego);
+  setTimeout(()=>fuego.remove(),1000);
+}
+
+// Crear confeti
+function crearConfeti(){
+  const conf = document.createElement("div");
+  conf.classList.add("confeti");
+  conf.style.left = Math.random()*window.innerWidth + "px";
+  document.body.appendChild(conf);
+  setTimeout(()=>conf.remove(),4000);
+}
+
+// Corazones flotando
 function crearCorazon(){
   const c=document.createElement("div");
   c.classList.add("corazon");
@@ -218,7 +286,7 @@ function crearCorazon(){
   c.style.left=Math.random()*window.innerWidth+"px";
   c.style.top=window.innerHeight+"px";
   document.body.appendChild(c);
-  setTimeout(()=>{c.remove();},6000);
+  setTimeout(()=>c.remove(),6000);
 }
 setInterval(crearCorazon,800);
 </script>
